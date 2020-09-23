@@ -1,0 +1,42 @@
+{{> header }}
+<a href="new"><button class="ui secondary button"><i class="plus square icon"></i>Ajouter un organisation</button></a><br>
+<a href="../../orgas/"><button style="margin-top:10px;" class="ui button"><i class="times icon"></i>Fermer</button></a>
+<a href="../../orgas/delete/{{#orga}}{{id}}{{/orga}}"><button style="margin-top:10px;" class="ui button red basic"><i class="times icon"></i>Supprimer</button></a>
+<a href="../../orgas/edit/{{#orga}}{{id}}{{/orga}}"><button style="margin-top:10px;" class="ui button basic"><i class="edit outline icon"></i>Modifier</button></a>
+<table class="ui celled table">
+  <tbody>
+    <tr>
+      <td data-label="id" style="background:whitesmoke;font-weight:bold;">id</td>
+      <td data-label="id">{{#orga}}{{id}}{{/orga}}</td>
+    </tr>
+    <tr>
+      <td data-label="Name" style="background:whitesmoke;font-weight:bold;">Name</td>
+      <td data-label="Name">{{#orga}}{{name}}{{/orga}}</td>
+    </tr>
+    <tr>
+      <td data-label="Domain" style="background:whitesmoke;font-weight:bold;">Domain</td>
+      <td data-label="Domain">{{#orga}}{{domain}}{{/orga}}</td>
+    </tr>
+    <tr>
+      <td data-label="Aliases" style="background:whitesmoke;font-weight:bold;">Aliases</td>
+      <td data-label="Aliases">{{#orga}}{{aliases}}{{/orga}}</td>
+    </tr>
+    <tr>
+      <td data-label="Groupes" style="background:whitesmoke;font-weight:bold;">Groupes</td>
+      <td data-label="Groupes">
+      	<div class="ui list">
+		  {{#groupes}}<div class="item">{{name}}</div>{{/groupes}}
+		</div>
+      </td>
+    </tr>
+    <tr>
+      <td data-label="Users" style="background:whitesmoke;font-weight:bold;">Users</td>
+      <td data-label="User">
+        <div class="ui list">
+		  {{#users}}<div class="item">{{name}}</div>{{/users}}
+		</div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+{{> footer }}

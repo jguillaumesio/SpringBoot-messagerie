@@ -1,0 +1,21 @@
+{{> header }}
+<i class="table icon"></i>
+<form class="ui form" method="post">
+  <div class="field">
+    <label>Name</label>
+    <input type="text" name="name" placeholder="Name" value="{{#edit}}{{name}}{{/edit}}">
+  </div>
+  <div class="field">
+    <label>Domain</label>
+    <input type="text" name="domain" placeholder="Domain" value="{{#edit}}{{domain}}{{/edit}}">
+  </div>
+   <div class="field">
+    <label>Aliases</label>
+    <input type="text" name="aliases" placeholder="Aliases" value="{{#edit}}{{aliases}}{{/edit}}">
+  </div>
+  <div class="ui segment">
+	  <button class="ui button green" type="submit">Modifier</button>
+	  <a href="../../orgas/"><button class="ui button" type="button">Cancel</button></a>
+  </div>
+</form>
+{{> footer }}

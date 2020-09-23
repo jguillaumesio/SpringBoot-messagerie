@@ -1,0 +1,75 @@
+{{> header }}
+<a href="new"><button class="ui secondary button"><i class="plus square icon"></i>Ajouter un organisation</button></a>
+<table class="ui five column table selectable " id="myTable">
+  <thead>
+    <tr><th>id</th>
+    <th>Name</th>
+    <th>Domain</th>
+    <th>Aliases</th>
+    <th></th>
+  </tr></thead>
+  <tbody>
+  	{{#orga}}
+    <tr class="tbody_tr">
+      <td>{{id}}</td>
+      <td>{{name}}</td>
+      <td>{{domain}}</td>
+      <td>{{aliases}}</td>
+      <td>
+      	<button class="circular basic grey ui icon button" onclick="location.href='display/{{id}}'">
+      		<i class="eye icon"></i>
+		</button>
+		<button class="circular basic grey ui icon button" onclick="location.href='edit/{{id}}'">
+			<i class="edit outline icon"></i>
+		</button>
+		<button class="circular red basic ui icon button" onclick="location.href='delete/{{id}}'">
+			<i class="times icon"></i>
+		</button>
+	  </td>
+    </tr>
+    {{/orga}}
+    <tr style="display:none;" class="nothing"><td>Pas de résultats</td></tr>
+  </tbody>
+  <tfoot>
+    <tr><th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th>
+    <div class="ui icon input">
+  		<input type="text" placeholder="Search..." id="searchInput" onkeyup="search()">
+  		<i class="search icon"></i>
+	</div>
+	</th>
+  </tr></tfoot>
+</table>
+<script>
+function search() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("searchInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByClassName("tbody_tr");
+  for (i = 0; i < tr.length; i++) {
+	display="none";
+    td = tr[i].getElementsByTagName("td");
+    for(y=0;y < td.length; y++){
+    	if (td[y]) {
+    	      txtValue = td[y].textContent || td[y].innerText;
+    	      if (txtValue.toUpperCase().indexOf(filter) != -1) {
+    	        display="table-row";
+    	      }
+    	    }
+    }
+    tr[i].style.display=display;
+    }
+  	var nothing="table-row";
+  	for(i=0;i<tr.length;i++){
+  		if(tr[i].style.display=="table-row"){
+  			nothing="none";
+  		}
+  	}
+  	document.getElementsByClassName("nothing")[0].style.display=nothing;
+  }
+</script>
+{{> footer }}

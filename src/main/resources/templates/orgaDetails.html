@@ -1,0 +1,79 @@
+{{> header }}
+<button class="ui secondary button"><i class="plus square icon"></i><a style="color:white;" href="/orgas/new">Ajouter un organisation</a></button>
+<table class="ui five column table selectable">
+  <thead>
+    <tr><th>id</th>
+    <th>Name</th>
+    <th>Domain</th>
+    <th>Aliases</th>
+    <th></th>
+  </tr></thead>
+  <tbody>
+  	{{#orga}}
+    <tr class="{{id}}" onclick="location.href='{{id}}'">
+      <td>{{id}}</td>
+      <td>{{name}}</td>
+      <td>{{domain}}</td>
+      <td>{{aliases}}</td>
+      <td>
+      	<button class="circular ui icon button">
+      		<i class="eye icon" onclick="location.href='display/{{id}}'"></i>
+		</button>
+		<button class="circular ui icon button">
+			<i class="edit outline icon" onclick="location.href='edit/{{id}}'"></i>
+		</button>
+		<button class="circular outline ui icon button">
+			<i class="times icon" onclick="location.href='delete/{{id}}'"></i>
+		</button>
+	  </td>
+    </tr>
+    {{/orga}}
+  </tbody>
+  <tfoot>
+    <tr><th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th>
+    <div class="ui icon input">
+  		<input type="text" placeholder="Search...">
+  		<i class="search icon"></i>
+	</div>
+	</th>
+  </tr></tfoot>
+</table>
+<div class="ui two column grid container">
+<div class="column">
+<table class="ui very basic collapsing celled table">
+  <thead>
+    <tr><th>Groupes ({{#figures}}{{groupes}}{{/figures}})</th>
+  </tr></thead>
+  <tbody>
+  	{{#groupes}}
+    <tr>
+      <td>{{name}}</td>
+    </tr>
+    {{/groupes}}
+  </tbody>
+</table>
+</div>
+<div class="column">
+<table class="ui very basic collapsing celled table">
+  <thead>
+    <tr><th>Users ({{#figures}}{{users}}{{/figures}})</th>
+  </tr></thead>
+  <tbody>
+  	{{#users}}
+    <tr>
+      <td>{{name}}</td>
+    </tr>
+    {{/users}}
+  </tbody>
+</table>
+</div>
+</div>
+<script>
+var url = window.location.pathname.substring(window.location.pathname.lastIndexOf('/')+1);
+document.getElementsByClassName(url.toString())[0].style.background = "lightgrey";
+</script>
+{{> footer }}
